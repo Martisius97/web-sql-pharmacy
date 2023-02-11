@@ -25,15 +25,13 @@ public class ImportHelper : IImportHelper
             await LogAboutInsert(clients);
             currentBatch++;
         } while (clients.Count > currentBatch * BatchSize);
-
-        // await _clientRepository.InsertClientsAsync(clients.Skip(BatchSize * currentBatch).Take(BatchSize));
     }
 
     private async Task LogAboutInsert(IEnumerable<Client> clients)
     {
         foreach (var client in clients)
         {
-            await _logsRepository.InsertLogEntryAsync(new LogEntry() {Action = $"Client was inserted  {client.Name}"});
+            await _logsRepository.InsertLogEntryAsync(new LogEntry {Action = $"Client was inserted  {client.Name}"});
         }
     }
 }

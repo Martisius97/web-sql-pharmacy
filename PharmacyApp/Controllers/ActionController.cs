@@ -17,7 +17,12 @@ public class ActionController : ControllerBase
     private readonly IClientRepository _clientRepository;
     private readonly IPostIndexService _postIndexService;
 
-    public ActionController(IDbMigrationClient dbMigrationClient, IImportHelper importHelper, IClientRepository clientRepository, IPostIndexService postIndexService)
+    public ActionController(
+        IDbMigrationClient dbMigrationClient, 
+        IImportHelper importHelper, 
+        IClientRepository clientRepository, 
+        IPostIndexService postIndexService
+    )
     {
         _dbMigrationClient = dbMigrationClient;
         _importHelper = importHelper;
@@ -51,6 +56,6 @@ public class ActionController : ControllerBase
     [HttpGet("initiateDatabase", Name = "InitiateDatabase")]
     public void InitiateDatabase()
     {
-        _dbMigrationClient.PerformMigrationsAsync();
+        _dbMigrationClient.PerformMigrations();
     }
 }

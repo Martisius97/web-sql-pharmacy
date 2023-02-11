@@ -28,12 +28,7 @@ public class ClientRepository : IClientRepository
         IEnumerable<Client>? clients = reader.Parse<Client>();
         return clients.ToList();
     }
-    
-    public async Task InsertClientAsync(Client client)
-    {
 
-    }
-    
     public async Task InsertClientsAsync(IEnumerable<Client> clients)
     {
         using var sqlConnection = new SqlConnection(_connectionString);

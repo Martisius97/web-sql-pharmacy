@@ -2,5 +2,5 @@
 
 public interface IDbMigrationClient
 {
-    void PerformMigrationsAsync();
+    void PerformMigrations();
 }

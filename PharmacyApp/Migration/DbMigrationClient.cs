@@ -14,7 +14,7 @@ public class DbMigrationClient : IDbMigrationClient
         _sqlConnectionString = options.Value.SqlConnectionString;
     }
 
-    public void PerformMigrationsAsync()
+    public void PerformMigrations()
     {
         ApplyMigrations();
     }
@@ -29,10 +29,7 @@ public class DbMigrationClient : IDbMigrationClient
                 .Build();
         var result = upgrader.PerformUpgrade();
 
-        if (result.Successful)
-        {
-        }
-        else
+        if (!result.Successful)
         {
             throw result.Error;
         }
